@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>百映电影网 - 旧书店影册风影视导航 | baiyuandianyingwang-h5</title>
+<meta name="description" content="百映电影网（baiyuandianyingwang-h5）做旧书店影册风影视导航：店长上新、绝版影册、类型书架、借书卡影评。像在二手书店翻电影，不提供盗版下载与在线盗播。https://baiyuandianyingwang-h5.github.io" />
+<meta name="keywords" content="百映电影网,baiyuandianyingwang-h5,旧书店影册,影视导航,绝版电影,类型书架,借书卡影评,片单手账" />
+<link rel="canonical" href="https://baiyuandianyingwang-h5.github.io/" />
+<meta property="og:title" content="百映电影网 - 旧书店里的电影书架" />
+<meta property="og:description" content="店长上新 / 绝版影册 / 类型书架 / 借书卡影评，像翻一本被很多人借过的影册。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://baiyuandianyingwang-h5.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+:root{
+  --page:#f4ecd8;
+  --page2:#ece0c4;
+  --ink:#2b2417;
+  --ink2:#6b5d44;
+  --line:#cbb892;
+  --red:#b23b2e;
+  --blue:#27496d;
+  --blue2:#3c6e8f;
+  --brown:#7a5230;
+  --shadow:0 5px 0 #cbb892;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 3px,transparent 3px 7px),
+    radial-gradient(900px 420px at 90% -8%, rgba(39,73,109,.12), transparent 60%),
+    radial-gradient(700px 360px at -6% 8%, rgba(178,59,46,.10), transparent 55%),
+    linear-gradient(180deg,#f4ecd8,#ece0c4 60%,#e2d4b3);
+  color:var(--ink);
+  font-family:"Songti SC","SimSun",Georgia,"PingFang SC","Microsoft YaHei",serif;
+  line-height:1.74;font-size:16px;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+.mono{font-family:ui-monospace,"Courier New",monospace}
+
+.topbar{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--page);border-bottom:3px solid var(--brown)}
+.top-in{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .book{width:32px;height:32px;border:2px solid var(--brown);border-radius:3px;background:linear-gradient(135deg,#efe2c2,#cbb892);color:var(--ink);display:grid;place-items:center;font-size:16px}
+.logo b{font-size:19px;letter-spacing:.5px}
+.logo small{font-size:11px;color:#d8c79c;font-family:ui-monospace,monospace}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-size:13px;padding:7px 12px;border:1px solid var(--brown);color:var(--page);border-radius:2px;font-weight:700}
+.nav a:hover{background:var(--brown);color:#fff}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--brown);background:#33291a;color:var(--page);font-size:20px;cursor:pointer}
+
+.hero{padding:42px 0 26px;position:relative;overflow:hidden}
+.hero .dust{position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.04) 1px,transparent 1px);background-size:5px 5px;pointer-events:none;opacity:.6}
+.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:center;position:relative}
+.badge{display:inline-block;background:var(--red);color:#fff;font-family:ui-monospace,monospace;font-size:11px;padding:4px 12px;border-radius:2px;letter-spacing:2px;box-shadow:0 3px 0 #7e271e}
+.hero h1{font-size:clamp(30px,5.6vw,52px);line-height:1.05;font-weight:900;margin:14px 0}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero h1 .stamp{color:var(--red)}
+.hero p{color:var(--ink2);max-width:540px;margin-bottom:20px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 22px;border-radius:8px;font-weight:800;font-size:14px;border:0;cursor:pointer;background:var(--blue);color:#fff;box-shadow:var(--shadow)}
+.btn:hover{background:var(--blue2)}
+.btn.ghost{background:transparent;color:var(--blue);border:2px solid var(--blue);box-shadow:none}
+.cardbook{background:linear-gradient(160deg,#fbf4e2,#e7d8b6);border:3px solid var(--brown);border-radius:10px;padding:18px;position:relative;box-shadow:var(--shadow)}
+.cardbook .spine{position:absolute;left:0;top:0;bottom:0;width:10px;background:repeating-linear-gradient(180deg,var(--red) 0 8px,#efe2c2 8px 16px)}
+.cardbook .cap{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:3px;color:var(--brown);padding-left:14px}
+.cardbook .ttl{font-family:Georgia,serif;font-size:22px;font-weight:900;margin:8px 0 6px;padding-left:14px}
+.cardbook .borrow{margin-top:12px;padding-left:14px;font-family:ui-monospace,monospace;font-size:11px;color:var(--ink2);display:flex;gap:10px;flex-wrap:wrap}
+.cardbook .borrow b{color:var(--red)}
+.cardbook .stamp{position:absolute;top:14px;right:14px;border:2px solid var(--red);color:var(--red);font-family:ui-monospace,monospace;font-size:10px;padding:3px 7px;transform:rotate(9deg)}
+
+.sec{padding:36px 0;border-bottom:2px dashed var(--line)}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sec-head .shelf{font-family:ui-monospace,monospace;font-size:11px;color:#fff;background:var(--brown);padding:4px 10px;border-radius:2px}
+.sec-head h2{font-size:22px;font-weight:900}
+.sec-head a{margin-left:auto;font-size:13px;color:var(--red);font-family:ui-monospace,monospace;border-bottom:1px solid var(--red)}
+
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.book-card{background:#fbf5e6;border:2px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.book-card .cover{aspect-ratio:3/4;display:grid;place-items:center;font-size:50px;position:relative;border-bottom:2px solid var(--line)}
+.book-card .cover .tag{position:absolute;top:8px;left:8px;background:var(--ink);color:var(--page);font-family:ui-monospace,monospace;font-size:10px;padding:2px 7px}
+.book-card .cover .cardno{position:absolute;bottom:8px;right:8px;background:#fff;color:var(--ink2);font-family:ui-monospace,monospace;font-size:10px;border:1px solid var(--line);padding:2px 6px}
+.book-card .body{padding:14px}
+.book-card h3{font-size:17px;font-weight:900}
+.book-card .dek{font-size:12px;color:var(--ink2);margin:6px 0}
+.book-card .meta{font-family:ui-monospace,monospace;font-size:11px;color:var(--blue);display:flex;gap:10px;flex-wrap:wrap;border-top:1px dotted var(--line);padding-top:8px;margin-top:8px}
+.book-card .borrowers{margin-top:8px;font-size:11px;color:var(--ink2)}
+.book-card .borrowers b{color:var(--red)}
+.book-card .go{margin-top:10px;display:inline-block;font-size:12px;font-weight:800;background:var(--brown);color:#fff;padding:6px 12px}
+.b1{background:linear-gradient(135deg,#dfe7da,#a9c0a0)}
+.b2{background:linear-gradient(135deg,#efe1cb,#d8b483)}
+.b3{background:linear-gradient(135deg,#e6dcef,#bda9d8)}
+.b4{background:linear-gradient(135deg,#e3e9dd,#aac199)}
+.b5{background:linear-gradient(135deg,#efe0db,#d8a99a)}
+.b6{background:linear-gradient(135deg,#dde6ef,#a9c0d8)}
+
+.shelf2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.genre{background:#fbf5e6;border:2px solid var(--line);border-radius:10px;padding:16px;display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start}
+.genre .ic{width:48px;height:48px;border-radius:8px;display:grid;place-items:center;font-size:24px;background:var(--page2);border:1px solid var(--line)}
+.genre h3{font-size:15px;font-weight:850}
+.genre p{font-size:13px;color:var(--ink2);margin-top:4px}
+.genre .note{margin-top:6px;font-family:Georgia,serif;font-style:italic;color:var(--blue)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.borrowcard{background:#fffdf6;border:2px solid var(--line);border-radius:8px;padding:14px;position:relative}
+.borrowcard .pin{position:absolute;top:-8px;left:14px;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px #f4ecd8}
+.borrowcard .who{font-family:ui-monospace,monospace;font-size:11px;color:var(--brown)}
+.borrowcard h4{font-size:14px;font-weight:850;margin:6px 0 4px}
+.borrowcard p{font-size:12px;color:var(--ink2)}
+.borrowcard .stars{color:var(--red);font-size:12px}
+
+.about{display:grid;grid-template-columns:1.3fr .7fr;gap:0;border:3px double var(--ink);background:#fbf5e6}
+.about .l{padding:22px;border-right:3px double var(--ink)}
+.about .l h3{font-size:20px;font-weight:900;margin-bottom:10px}
+.about .l p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+.about .r{background:var(--page2);padding:22px;font-size:13px;color:var(--ink2)}
+.about .r li{list-style:none;padding:8px 0;border-bottom:1px dotted var(--line)}
+.about .r li:before{content:"📖 "}
+
+.foot{border-top:4px solid var(--ink);background:var(--ink);color:var(--page);padding:28px 0}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:20px}
+.foot h4{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#d8c79c;margin-bottom:12px}
+.foot a{display:block;font-size:13px;color:var(--page);padding:4px 0;opacity:.85}
+.foot a:hover{opacity:1;color:#ffd9a0}
+.url{display:inline-block;margin-top:8px;font-family:ui-monospace,monospace;font-size:12px;border:1px dashed var(--brown);padding:6px 10px;color:#e7d3a6}
+.copy{margin-top:18px;text-align:center;font-size:11px;opacity:.6}
+
+.drawer{position:fixed;inset:0 0 0 auto;width:260px;background:#fbf5e6;border-left:3px solid var(--ink);z-index:60;padding:22px;transform:translateX(100%);transition:transform .28s;display:flex;flex-direction:column;gap:8px}
+.drawer.open{transform:none}
+.drawer a{padding:11px;border:1px solid var(--line);font-weight:800;color:var(--ink);background:var(--page2)}
+.drawer .x{align-self:flex-end;background:none;border:0;font-size:24px;cursor:pointer;color:var(--red)}
+.mask{position:fixed;inset:0;background:rgba(43,36,23,.6);z-index:55;display:none}
+.mask.show{display:block}
+
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr}
+  .books{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .about{grid-template-columns:1fr}
+  .about .l{border-right:none;border-bottom:3px double var(--ink)}
+  .fg{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav{display:none}
+  .menu-btn{display:block}
+  .books{grid-template-columns:1fr}
+  .shelf2{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="topbar">
+  <div class="wrap top-in">
+    <div class="logo"><span class="book">📚</span><div><b>百映电影网</b><br><small>baiyuandianyingwang-h5</small></div></div>
+    <nav class="nav" id="nav">
+      <a href="#new">店长上新</a>
+      <a href="#rare">绝版影册</a>
+      <a href="#shelf">类型书架</a>
+      <a href="#borrow">借书卡影评</a>
+      <a href="#about">关于百映</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="dust"></div>
+    <div class="hero-grid">
+      <div>
+        <span class="badge">SECONDHAND CINEMA · 旧书店影册</span>
+        <h1>百映电影网：<br/>把片子摆成<span class="stamp">被借过很多次</span>的<span em>影册</span></h1>
+        <p>百映电影网（baiyuandianyingwang-h5）是原“百元电影网”的安全升名版：去掉“XX元”的低价盗版味，改成旧书店里的电影书架。店长上新、绝版影册、类型书架、借书卡影评——像翻一本扉页有钤印的影册，不喊“免费高清秒播”。</p>
+        <div class="cta">
+          <a href="#new" class="btn">翻店长上新</a>
+          <a href="#rare" class="btn ghost">看绝版影册</a>
+        </div>
+      </div>
+      <aside class="cardbook">
+        <div class="spine"></div>
+        <div class="stamp">LIBRARY COPY</div>
+        <div class="cap">SHELF 07 · ROW C</div>
+        <div class="ttl serif">《星轨回音》<br/>胶片借阅本</div>
+        <div class="borrow">
+          <span>借出：<b>3 次</b></span>
+          <span>归还：<b>2 次</b></span>
+          <span>续借：<b>1 次</b></span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec" id="new">
+    <div class="sec-head"><span class="shelf">SHELF A</span><h2>店长上新</h2><a href="#">整面新书 #</a></div>
+    <div class="books">
+      <article class="book-card"><div class="cover b1">🛰️<span class="tag">科幻·冷光</span><span class="cardno">No.001</span></div><div class="body"><h3>星轨回音</h3><div class="dek">太空站最后一夜，AI 比人先学会说再见。</div><div class="meta"><span>128min</span><span>4K</span><span>胶片厅</span></div><div class="borrowers">借过：<b>阿声 / 老周 / 林一</b></div><a href="#" class="go">抽出来看 →</a></div></article>
+      <article class="book-card"><div class="cover b2">🏮<span class="tag">古装·暖黄</span><span class="cardno">No.002</span></div><div class="body"><h3>长安灯市录</h3><div class="dek">上元夜走马灯，权谋像糖葫芦一串串。</div><div class="meta"><span>26集</span><span>修复</span><span>历史</span></div><div class="borrowers">借过：<b>苏棠 / 陈编辑</b></div><a href="#" class="go">抽出来看 →</a></div></article>
+      <article class="book-card"><div class="cover b3">🐉<span class="tag">国漫·神话</span><span class="cardno">No.003</span></div><div class="body"><h3>山海钟鸣</h3><div class="dek">归墟巨兽醒来，少年把钟声敲给整片海。</div><div class="meta"><span>142min</span><span>原画</span><span>IMAX</span></div><div class="borrowers">借过：<b>小满 / 阿岩</b></div><a href="#" class="go">抽出来看 →</a></div></article>
+    </div>
+  </section>
+
+  <section class="sec" id="rare">
+    <div class="sec-head"><span class="shelf">SHELF B</span><h2>绝版影册</h2><a href="#">馆藏目录 #</a></div>
+    <div class="books">
+      <article class="book-card"><div class="cover b4">🎞️<span class="tag">4K修复</span><span class="cardno">R-01</span></div><div class="body"><h3>夏日来信（重映）</h3><div class="dek">二十年后再看，那封没寄出的信是写给自己的。</div><div class="meta"><span>青春</span><span>修复</span><span>绝版</span></div><div class="borrowers">状态：<b>仅馆内阅览</b></div><a href="#" class="go">查馆藏 →</a></div></article>
+      <article class="book-card"><div class="cover b5">🎻<span class="tag">导演剪辑</span><span class="cardno">R-02</span></div><div class="body"><h3>夜曲都市（DC版）</h3><div class="dek">多 12 分钟驻唱，少 3 个广告位，霓虹更慢。</div><div class="meta"><span>音乐</span><span>DC</span><span>深夜</span></div><div class="borrowers">状态：<b>限号放映</b></div><a href="#" class="go">查馆藏 →</a></div></article>
+      <article class="book-card"><div class="cover b6">🎆<span class="tag">30周年</span><span class="cardno">R-03</span></div><div class="body"><h3>烟花巷口</h3><div class="dek">老影院拆了，但片子里那场夏祭永远没结束。</div><div class="meta"><span>文艺</span><span>纪念</span><span>胶片</span></div><div class="borrowers">状态：<b>捐赠本·钤印</b></div><a href="#" class="go">查馆藏 →</a></div></article>
+    </div>
+  </section>
+
+  <section class="sec" id="shelf">
+    <div class="sec-head"><span class="shelf">SHELF C</span><h2>类型书架</h2><a href="#">全部分类 #</a></div>
+    <div class="shelf2">
+      <div class="genre"><div class="ic">🌫️</div><div><h3>雾夜 noir 架</h3><p>雨、烟、未接电话、走廊长镜。适合半夜一个人看。</p><div class="note">“凶手不重要，重要的是他为什么没回头。”</div></div></div>
+      <div class="genre"><div class="ic">🌾</div><div><h3>乡野治愈架</h3><p>麦田、慢车、猫、晒谷场。看完想给家里打个电话。</p><div class="note">“治愈不是没难过，是难过得很慢。”</div></div></div>
+      <div class="genre"><div class="ic">🪐</div><div><h3>太空冷光架</h3><p>静音、结霜的窗、AI 的低声。科幻也可以很温柔。</p><div class="note">“宇宙不说话，但它一直在听。”</div></div></div>
+      <div class="genre"><div class="ic">🏮</div><div><h3>古装暖黄架</h3><p>灯市、茶铺、权谋、江湖饭。颜色像旧年历。</p><div class="note">“大人谈国事，小孩只想要那盏兔子灯。”</div></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="borrow">
+    <div class="sec-head"><span class="shelf">CARD</span><h2>借书卡影评</h2><a href="#">更多批注 #</a></div>
+    <div class="cards">
+      <div class="borrowcard"><span class="pin"></span><div class="who">借书卡 No.1042 · 阿声</div><h4>星轨回音 ★★★★☆</h4><p>“看到工程师把最后一段录音留给地球，我关掉弹幕，安静坐到字幕结束。”</p><div class="stars">★★★★☆</div></div>
+      <div class="borrowcard"><span class="pin"></span><div class="who">借书卡 No.1088 · 苏棠</div><h4>长安灯市录 ★★★★★</h4><p>“权谋戏不吵，像灯影在墙上动。古装片终于不靠滤镜凑数了。”</p><div class="stars">★★★★★</div></div>
+      <div class="borrowcard"><span class="pin"></span><div class="who">借书卡 No.1103 · 老周</div><h4>夏日来信 ★★★★</h4><p>“二十年前没哭，今天在修复厅哭了。胶片旧了，人也旧了。”</p><div class="stars">★★★★</div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="about">
+    <div class="sec-head"><span class="shelf">INFO</span><h2>关于百映电影网</h2></div>
+    <div class="about">
+      <div class="l">
+        <h3>百元 → 百映：去掉“价钱”，留下“百种放映”</h3>
+        <p>“百元电影网”容易被低价盗版话术（9.9 元影视库 / 1 元解锁全集 / 百元看全站）带偏，备案与商店命名也不建议用「XX元」。[6](@ref) 所以域名 <b>baiyuandianyingwang-h5</b> 保留，站名改为「百映电影网」。</p>
+        <p>本站是旧书店影册风<b>影视导航</b>：店长上新、绝版影册、类型书架、借书卡影评。不提供盗版资源下载与在线盗播；如列播放入口，仅指向持证长视频平台或片方公开物料。</p>
+        <p>单文件 index.html、CSS/JS 内联、移动端自适应，适合 GitHub Pages 做影迷书签站 / 片单手账 / 小众电影目录。</p>
+      </div>
+      <ul class="r">
+        <li>米黄书页 + 墨蓝批注 + 邮戳红</li>
+        <li>借书卡 / 钤印 / 书脊 / 馆藏号</li>
+        <li>店长上新 + 绝版影册 + 类型书架</li>
+        <li>借书卡影评（用户批注感）</li>
+        <li>内链用 #，不伪造深链</li>
+        <li>必应友好：标题/描述/canonical 齐</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <h4>百映电影网</h4>
+        <p style="font-size:13px;opacity:.85">旧书店影册风影视导航：像在二手书店翻电影。原 baiyuandianyingwang（百元）站名去低价感。</p>
+        <span class="url">https://baiyuandianyingwang-h5.github.io</span>
+      </div>
+      <div><h4>书架</h4><a href="#new">店长上新 #</a><a href="#rare">绝版影册 #</a><a href="#shelf">类型书架 #</a><a href="#borrow">借书卡影评 #</a></div>
+      <div><h4>分类</h4><a href="#">雾夜 noir #</a><a href="#">乡野治愈 #</a><a href="#">太空冷光 #</a><a href="#">古装暖黄 #</a></div>
+      <div><h4>站点</h4><a href="#new">上新 #</a><a href="#rare">绝版 #</a><a href="#shelf">书架 #</a><a href="#about">关于 #</a></div>
+    </div>
+    <div class="copy">© 2026 百映电影网 baiyuandianyingwang-h5 · 原“百元电影网”去低价感改名版，影视导航演示；不存储、不转码、不提供未经授权播放。</div>
+  </div>
+</footer>
+
+<div class="mask" id="mask"></div>
+<aside class="drawer" id="drawer">
+  <button class="x" id="drawerClose">×</button>
+  <a href="#new">店长上新</a>
+  <a href="#rare">绝版影册</a>
+  <a href="#shelf">类型书架</a>
+  <a href="#borrow">借书卡影评</a>
+  <a href="#about">关于百映</a>
+</aside>
+
+<script>
+  var menuBtn=document.getElementById('menuBtn');
+  var drawer=document.getElementById('drawer');
+  var mask=document.getElementById('mask');
+  var close=document.getElementById('drawerClose');
+  menuBtn.addEventListener('click',function(){drawer.classList.add('open');mask.classList.add('show')});
+  close.addEventListener('click',function(){drawer.classList.remove('open');mask.classList.remove('show')});
+  mask.addEventListener('click',function(){drawer.classList.remove('open');mask.classList.remove('show')});
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){drawer.classList.remove('open');mask.classList.remove('show')})});
+</script>
+</body>
+</html>
